@@ -4,7 +4,7 @@ const isAllArraysValid = (arr1, arr2) =>
 const mergeSortedArrays = (arr1, arr2) => {
     if (isAllArraysValid(arr1, arr2)) {
 
-        //todo
+        // todo
 
     }
 };
