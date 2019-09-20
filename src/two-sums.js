@@ -1,5 +1,5 @@
 // O(n) - One-pass Hash Table
-const twoSum = function(nums, target) {
+const twoSumOld = function(nums, target) {
     const map = new Map;
     for (let i = 0; i < nums.length; i++) {
         const complement = target - nums[i];
@@ -10,7 +10,7 @@ const twoSum = function(nums, target) {
     }
 };
 
-const twoSum2 = function(nums, target) {
+const twoSum2Old = function(nums, target) {
     const map = new Map();
     for (let i = 0; i < nums.length; i++) {
         const complement = target - nums[i];
@@ -21,7 +21,65 @@ const twoSum2 = function(nums, target) {
     }
 };
 
-const nums = [1, 2, 11, 15, 7, 3, 6];
+
+const twoSum3Values = (nums, target) => {
+    class Hash {
+        values = {};
+
+        has(v) {
+            return this.values[v] !== undefined;
+        }
+
+        set(value, index) {
+            this.values[value] = index;
+        }
+
+        get(v) {
+            return this.values[v];
+        }
+    }
+
+    const hash = new Hash();
+
+    for (let i = 0; i < nums.length; i++) {
+        const difference = target - nums[i];
+        if (hash.has(nums[i])) {
+            return [nums[hash.get(nums[i])], nums[i]];
+        }
+        hash.set(difference, i);
+    }
+};
+
+class Hash {
+    values = {};
+
+    has(v) {
+        return this.values[v] !== undefined;
+    }
+
+    set(value, index) {
+        this.values[value] = index;
+    }
+
+    get(v) {
+        return this.values[v];
+    }
+}
+
+const twoSum = (nums, target) => {
+    const hash = new Hash();
+    for (let i = 0; i < nums.length; i++) {
+        const difference = target - nums[i];
+        if (hash.has(nums[i])) {
+            return [hash.get(nums[i]), i];
+        }
+        hash.set(difference, i);
+    }
+};
+
+const nums = [3, 6];
 const target = 9;
+console.log(twoSumOld(nums, target));
+console.log(twoSum2Old(nums, target));
+console.log(twoSum3Values(nums, target));
 console.log(twoSum(nums, target));
-console.log(twoSum2(nums, target));
