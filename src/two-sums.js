@@ -21,37 +21,10 @@ const twoSum2Old = function(nums, target) {
     }
 };
 
-
-const twoSum3Values = (nums, target) => {
-    class Hash {
-        values = {};
-
-        has(v) {
-            return this.values[v] !== undefined;
-        }
-
-        set(value, index) {
-            this.values[value] = index;
-        }
-
-        get(v) {
-            return this.values[v];
-        }
-    }
-
-    const hash = new Hash();
-
-    for (let i = 0; i < nums.length; i++) {
-        const difference = target - nums[i];
-        if (hash.has(nums[i])) {
-            return [nums[hash.get(nums[i])], nums[i]];
-        }
-        hash.set(difference, i);
-    }
-};
-
 class Hash {
-    values = {};
+    constructor() {
+        this.values = {};
+    }
 
     has(v) {
         return this.values[v] !== undefined;
@@ -65,6 +38,18 @@ class Hash {
         return this.values[v];
     }
 }
+
+const twoSum3Values = (nums, target) => {
+    const hash = new Hash();
+
+    for (let i = 0; i < nums.length; i++) {
+        const difference = target - nums[i];
+        if (hash.has(nums[i])) {
+            return [nums[hash.get(nums[i])], nums[i]];
+        }
+        hash.set(difference, i);
+    }
+};
 
 const twoSum = (nums, target) => {
     const hash = new Hash();
