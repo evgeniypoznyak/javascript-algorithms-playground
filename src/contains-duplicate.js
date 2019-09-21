@@ -16,34 +16,31 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
  */
 
-const arr4 = require('./example1');
-
 const containsDuplicate = nums => {
-    for (let i = 0; i < nums.length; i++) {
-        let duplicate = 0;
-        nums.map(e => {
-            if (e === nums[i]) {
-                duplicate++;
-            }
-        });
-        if (duplicate < 2) {
-            duplicate = 0;
-        } else {
+    if (!Array.isArray(nums) || nums.length < 2) {
+        return false;
+    }
+    for (let i = nums.length; i >= nums.length; i--) {
+        const needle = nums.pop();
+        if (nums.find(el => el === needle) !== undefined) {
             return true;
         }
     }
+
     return false;
 };
 
-const arr1 = [1, 2, 3, 1]; // true
-const arr2 = [1, 2, 3, 4]; // false
-const arr3 = [1, 2, 3, 1]; // true
+const arr1 = [0, 0, 3, 1]; // true
+const arr2 = [1, 2, 0, 0]; // true
+const arr3 = [0, 2, -5, 0]; // true
+const arr4 = []; // false
+const arr5 = [3, 1]; // false
 
 
 console.log(containsDuplicate(arr1));
 console.log(containsDuplicate(arr2));
 console.log(containsDuplicate(arr3));
-console.log(arr4.length);
-// console.log(containsDuplicate(arr4));
+console.log(containsDuplicate(arr4));
+console.log(containsDuplicate(arr5));
 
 
