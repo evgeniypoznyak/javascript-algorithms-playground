@@ -16,7 +16,7 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
  */
 
-const containsDuplicate = nums => {
+const containsDuplicateOLD = nums => {
     if (!Array.isArray(nums) || nums.length < 2) {
         return false;
     }
@@ -29,6 +29,8 @@ const containsDuplicate = nums => {
 
     return false;
 };
+
+const containsDuplicate = nums => nums.length !== new Set(nums).size;
 
 const arr1 = [0, 0, 3, 1]; // true
 const arr2 = [1, 2, 0, 0]; // true
