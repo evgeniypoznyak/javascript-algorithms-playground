@@ -30,8 +30,8 @@ class Hash {
         return this.values[v] !== undefined;
     }
 
-    set(value, index) {
-        this.values[value] = index;
+    set(value, index1, index2) {
+        this.values[value] = [index1, index2];
     }
 
     get(v) {
