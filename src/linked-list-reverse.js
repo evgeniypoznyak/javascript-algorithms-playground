@@ -1,4 +1,4 @@
-// add a method remove() to the linked list that deletes a node to the specified index.
+// add a method reverse() to the linked list that reverses the entire list of nodes
 
 class LinkedList {
     constructor(value) {
@@ -15,6 +15,7 @@ class LinkedList {
             value: value,
             next: null,
         };
+        console.log(newNode);
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
@@ -80,13 +81,20 @@ class LinkedList {
         this.length--;
         return this.printList();
     }
+
+    reverse() {
+        // Code Here
+        return this.printList();
+    }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
+myLinkedList.printList();
 myLinkedList.insert(2, 99);
-myLinkedList.insert(3, 88);
+myLinkedList.insert(20, 88);
+myLinkedList.printList();
 myLinkedList.remove(2);
-console.log(myLinkedList.printList());
+myLinkedList.reverse();
