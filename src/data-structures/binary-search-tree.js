@@ -181,7 +181,7 @@ class BinarySearchTree {
     }
 }
 
-function traversePreOrder(node, list) {
+const traversePreOrder = (node, list) => {
     list.push(node.value);
     if (node.left) {
         traversePreOrder(node.left, list);
@@ -190,9 +190,9 @@ function traversePreOrder(node, list) {
         traversePreOrder(node.right, list);
     }
     return list;
-}
+};
 
-function traverseInOrder(node, list) {
+const traverseInOrder = (node, list) => {
     if (node.left) {
         traverseInOrder(node.left, list);
     }
@@ -201,9 +201,9 @@ function traverseInOrder(node, list) {
         traverseInOrder(node.right, list);
     }
     return list;
-}
+};
 
-function traversePostOrder(node, list) {
+const traversePostOrder = (node, list) => {
     if (node.left) {
         traversePostOrder(node.left, list);
     }
@@ -212,7 +212,7 @@ function traversePostOrder(node, list) {
     }
     list.push(node.value);
     return list;
-}
+};
 
 
 const tree = new BinarySearchTree();
