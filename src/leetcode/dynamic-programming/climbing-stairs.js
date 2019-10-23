@@ -31,5 +31,64 @@ Accepted
  * @return {number}
  */
 const climbStairs = n => {
+    if (n <= 3) {
+        return n;
+    }
+    const result = [];
 
+    for (let i = 0; i < n; i++) {
+
+    }
 };
+
+let calculations1 = 0;
+let calculations2 = 0;
+// const calculations3 = 0;
+
+const climbStairs2 = n => {
+    if (n <= 3) {
+        return n;
+    }
+    const steps = [1, 2, 3];
+    for (let i = 3; i < n; i++) {
+        calculations1++;
+        steps.push(steps[i - 1] + steps[i - 2]);
+    }
+    return steps.pop();
+};
+
+console.log(climbStairs2(45));
+
+const climbStairsFactory = () => {
+    const cache = {};
+    return function calculateStairs(n) {
+        calculations2++;
+        if (n <= 3) {
+            return n;
+        }
+        cache[n] = calculateStairs(n - 1) + calculateStairs(n - 2);
+        return cache[n];
+    };
+};
+
+const calculateSteps = climbStairsFactory();
+console.log(calculateSteps(45));
+
+
+console.log('calculations1: ', calculations1);
+console.log('calculations2: ', calculations2);
+// console.log(climbStairs2(8));
+
+// climbStairs(1); // 1
+// climbStairs(2); // 2
+// climbStairs(3); // 3
+// climbStairs(4); // 5
+// 1 + 1 + 1 + 1
+// 2 + 1 + 1
+// 1 + 2 + 1
+// 1 + 1 + 2
+// 2 + 2
+// climbStairs(5); // 8
+// climbStairs(6); // 13
+// climbStairs(7); // 21
+// climbStairs(8); // 34
