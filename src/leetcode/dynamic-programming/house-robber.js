@@ -45,19 +45,26 @@ var rob = function(nums) {
  * @return {number}
  */
 const rob = nums => {
-    const result = {};
-
-    for (let i = 0; i < nums.length; i++) {
-
+    switch (nums.length) {
+        case 0:
+            return 0;
+        case 1:
+            return nums[0];
+        case 2:
+            return Math.max(nums[0], nums[1]);
     }
-    return result;
+    const totals = [nums[0], Math.max(nums[0], nums[1])];
+    for (let i = 2; i < nums.length; i++) {
+        totals[i] = Math.max(totals[i - 1], totals[i - 2] + nums[i]);
+    }
+    return totals.pop();
 };
 
 
-// console.log(rob([1, 2])); // 2
-// console.log(rob([1, 1])); // 1
-// console.log(rob([1, 2, 3, 1])); // 1
-// console.log(rob([2, 7, 9, 3, 1])); // 1
+console.log(rob([1, 2])); // 2
+console.log(rob([1, 1])); // 1
+console.log(rob([1, 2, 3, 1])); // 1
+console.log(rob([2, 7, 9, 3, 1])); // 1
 
 
 const rob2 = nums => {
@@ -97,6 +104,8 @@ const rob2 = nums => {
     return maxAtOneBefore;
 };
 
+// console.log(rob2([2, 7, 9, 3, 1]));
+
 const rob3 = nums => {
     console.log(nums);
     if (nums.length === 0) return 0;
@@ -117,6 +126,4 @@ const rob3 = nums => {
     return totals.pop();
 };
 
-
-// console.log(rob2([2, 7, 9, 3, 1]));
-console.log(rob3([2, 7, 9, 3, 1]));
+// console.log(rob3([2, 7, 9, 3, 1]));
