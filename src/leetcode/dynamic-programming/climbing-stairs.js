@@ -25,27 +25,14 @@ Explanation: There are three ways to climb to the top.
 Accepted
  */
 
+let calculations1 = 0;
+let calculations2 = 0;
 
 /**
  * @param {number} n
  * @return {number}
  */
 const climbStairs = n => {
-    if (n <= 3) {
-        return n;
-    }
-    const result = [];
-
-    for (let i = 0; i < n; i++) {
-
-    }
-};
-
-let calculations1 = 0;
-let calculations2 = 0;
-// const calculations3 = 0;
-
-const climbStairs2 = n => {
     if (n <= 3) {
         return n;
     }
@@ -57,7 +44,6 @@ const climbStairs2 = n => {
     return steps.pop();
 };
 
-console.log(climbStairs2(45));
 
 const climbStairsFactory = () => {
     const cache = {};
@@ -71,24 +57,10 @@ const climbStairsFactory = () => {
     };
 };
 
+console.log(climbStairs(45));
+console.log('calculations1: ', calculations1);
+
+
 const calculateSteps = climbStairsFactory();
 console.log(calculateSteps(45));
-
-
-console.log('calculations1: ', calculations1);
 console.log('calculations2: ', calculations2);
-// console.log(climbStairs2(8));
-
-// climbStairs(1); // 1
-// climbStairs(2); // 2
-// climbStairs(3); // 3
-// climbStairs(4); // 5
-// 1 + 1 + 1 + 1
-// 2 + 1 + 1
-// 1 + 2 + 1
-// 1 + 1 + 2
-// 2 + 2
-// climbStairs(5); // 8
-// climbStairs(6); // 13
-// climbStairs(7); // 21
-// climbStairs(8); // 34
