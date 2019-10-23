@@ -103,6 +103,7 @@ const rob3 = nums => {
     if (nums.length === 1) return nums[0];
     const totals = [nums[0], Math.max(nums[0], nums[1])];
     for (let i = 2; i < nums.length; i++) {
+        console.log(nums);
         console.log(`i:  ${i}`);
         console.log('totals[i - 1]: ', totals[i - 1]);
         console.log('totals[i - 2]: ', totals[i - 2]);
@@ -110,10 +111,10 @@ const rob3 = nums => {
         console.log(`Comparing maximum between ${totals[i - 1]} and ${totals[i - 2]} + ${nums[i]} = ${totals[i - 2] + nums[i]}`);
         totals[i] = Math.max(totals[i - 1], totals[i - 2] + nums[i]);
         console.log(`Writing difference: ${totals[i]}`);
+        console.log('totals: ', totals);
         console.log('----');
     }
-    console.log(totals);
-    return totals[totals.length - 1];
+    return totals.pop();
 };
 
 
