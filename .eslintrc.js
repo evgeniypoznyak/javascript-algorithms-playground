@@ -26,7 +26,7 @@ module.exports = {
             },
         }],
         'arrow-parens': ['error', 'as-needed'],
-        'max-len': [2, 120, 4],
+        'max-len': [2, 130, 4],
         'react/prop-types': ['off'],
         'react/display-name': ['off'],
         'react/no-unescaped-entities': ['off'],
