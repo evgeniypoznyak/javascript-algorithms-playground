@@ -27,7 +27,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  */
 const maxProfit = prices => {
     // assume that at index 0 is minimum value
-    let min = prices[0];
+    let min = Number.MAX_SAFE_INTEGER;
     let max = Number.MIN_SAFE_INTEGER;
     for (let i = 1; i < prices.length; i++) {
         // calculate difference and memoize this as absolute min value
@@ -35,7 +35,7 @@ const maxProfit = prices => {
         // calculate difference and memoize this as absolute max value
         max = Math.max(max, prices[i] - min);
     }
-    return max;
+    return max < 0 ? 0 : max;
 };
 
 console.log(maxProfit([5, 2, 3, 5, 3, 6, 4]));
