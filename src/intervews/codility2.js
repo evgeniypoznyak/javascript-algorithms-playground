@@ -1,7 +1,7 @@
 // you can write to stdout for debugging purposes, e.g.
 // console.log('this is a debug message');
 
-function solution(A, B, C, D) {
+const solution = (A, B, C, D) => {
     function sortNumber(a, b) {
         return a - b;
     }
@@ -11,9 +11,7 @@ function solution(A, B, C, D) {
 
     const firstGroup = [];
     const secondGroup = [];
-    if (A === 2 && B === 3 && C === 3 && D === 2) {
-        return 3;
-    }
+
     for (let i = 0; i < numArray.length; i++) {
         for (let j = 1; j < numArray.length; j++) {
             const stringNumber = numArray[i] + '' + numArray[j];
@@ -30,24 +28,20 @@ function solution(A, B, C, D) {
         return 0;
     }
 
-    const result = [];
 
-    for (let i = 0; i < firstGroup.length; i++) {
-        for (let j = 0; j < firstGroup.length; j++) {
-            const stringNumber = firstGroup[i] + '' + secondGroup[j];
-            if ((/([0-9]).*?\1/).test(stringNumber) === false) {
-                result.push(stringNumber);
-            }
-        }
-    }
-    if (A === 1 && B === 8 && C === 3 && D === 2) {
-        return 6;
+
+    const result = [];
+    console.log('numArray: ', numArray);
+    const arrayToCahnge = numArray.splice();
+    for (let i = 0; i < numArray.length; i++) {
+        // todo
     }
 
     return result.length;
-}
+};
 
 
-console.log(solution(1, 8, 3, 2));
-console.log(solution(2, 3, 3, 2));
-// console.log(solution(6, 2, 4, 7));
+console.log('6: ', solution(1, 8, 3, 2)); // 6
+console.log('3: ', solution(2, 3, 3, 2)); // 3
+console.log('0: ', solution(6, 2, 4, 7)); // 0
+
