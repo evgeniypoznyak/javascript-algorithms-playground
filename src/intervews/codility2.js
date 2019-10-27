@@ -1,6 +1,3 @@
-const isMinute = number => {
-
-};
 
 const isHour = number => {
     return number > -1 && number < 24;
@@ -34,12 +31,12 @@ const solution = (A, B, C, D) => {
     if (firstGroup.length === 0) {
         return 0;
     }
-    console.log('firstGroup: ', firstGroup);
-    console.log('secondGroup: ', secondGroup);
+    // console.log('firstGroup: ', firstGroup);
+    // console.log('secondGroup: ', secondGroup);
 
 
     const properVariations = [];
-    console.log('numArray: ', numArray);
+    // console.log('numArray: ', numArray);
     const arrayToChange = numArray.slice();
     const length = arrayToChange.length;
     for (let i = 0; i < length; i++) {
@@ -82,8 +79,7 @@ const solution = (A, B, C, D) => {
         }
     }
 
-    console.log(properVariations);
-    let finalResult = 0;
+    // console.log(properVariations);
     const testArr = [];
 
     if (properVariations[0].value >= 24) {
@@ -94,9 +90,24 @@ const solution = (A, B, C, D) => {
         const numArrayCopy = numArray.slice();
         delete numArrayCopy[properVariations[i].index1];
         delete numArrayCopy[properVariations[i].index2];
-        console.log('numArrayCopy: ', numArrayCopy);
+        // console.log('numArrayCopy: ', numArrayCopy);
         for (let j = i; j < properVariations.length; j++) {
-            // todo switch two groups
+            if (
+                isHour(parseInt(properVariations[j].value)) &&
+                numArrayCopy[properVariations[j].index1] !== undefined &&
+                numArrayCopy[properVariations[j].index2] !== undefined
+            ) {
+                testArr.push({
+                    value: properVariations[j].value + '' + properVariations[i].value,
+                    ind: [
+                        properVariations[j].index1,
+                        properVariations[j].index2,
+                        properVariations[i].index1,
+                        properVariations[i].index2,
+                    ],
+                });
+            }
+
             if (
                 isHour(parseInt(properVariations[i].value)) &&
                 numArrayCopy[properVariations[j].index1] !== undefined &&
@@ -111,28 +122,17 @@ const solution = (A, B, C, D) => {
                         properVariations[j].index2,
                     ],
                 });
-                finalResult++;
             }
         }
     }
 
-    console.log('testArr: ', testArr);
+    // console.log('testArr: ', testArr);
     const setVal = new Set();
     for (let i = 0; i < testArr.length; i++) {
         setVal.add(testArr[i].value);
     }
 
     return setVal.size;
-    /*
-    [ 1, 2, 3, 8 ]
-    1238 / 1238
-    2138 / 2138
-    2318 / ...
-    1328 / 1328
-    ... / 1823
-    ... / 1832
-
-     */
 };
 
 
