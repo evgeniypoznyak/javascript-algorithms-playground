@@ -82,9 +82,9 @@ const solution = (A, B, C, D) => {
     // console.log(properVariations);
     const testArr = [];
 
-    if (properVariations[0].value >= 24) {
-        return 0;
-    }
+    // if (properVariations[0].value >= 24) {
+    //     return 0;
+    // }
 
     for (let i = 0; i < properVariations.length; i++) {
         const numArrayCopy = numArray.slice();
