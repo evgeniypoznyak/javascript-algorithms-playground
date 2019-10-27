@@ -34,6 +34,9 @@ const solution = (A, B, C, D) => {
     if (firstGroup.length === 0) {
         return 0;
     }
+    console.log('firstGroup: ', firstGroup);
+    console.log('secondGroup: ', secondGroup);
+
 
     const properVariations = [];
     console.log('numArray: ', numArray);
@@ -93,13 +96,12 @@ const solution = (A, B, C, D) => {
         delete numArrayCopy[properVariations[i].index2];
         console.log('numArrayCopy: ', numArrayCopy);
         for (let j = i; j < properVariations.length; j++) {
+            // todo switch two groups
             if (
                 isHour(parseInt(properVariations[i].value)) &&
                 numArrayCopy[properVariations[j].index1] !== undefined &&
                 numArrayCopy[properVariations[j].index2] !== undefined
             ) {
-                // console.log('numArrayCopy[jValue.index1]: ', numArrayCopy[jValue.index1]);
-                // console.log('numArrayCopy[jValue.index2]: ', numArrayCopy[jValue.index2]);
                 testArr.push({
                     value: properVariations[i].value + '' + properVariations[j].value,
                     ind: [
@@ -114,93 +116,12 @@ const solution = (A, B, C, D) => {
         }
     }
 
-    // const keys = Object.keys(properVariations);
-
-    // for (let i = 0; i < keys.length; i++) {
-    //     const iValue = properVariations[keys[i]];
-    //     const numArrayCopy = numArray.slice();
-    //     console.log('numArrayCopy: ', numArrayCopy);
-    //     // console.log(`${keys[i]}:`, iValue);
-    //     delete numArrayCopy[iValue.index1];
-    //     delete numArrayCopy[iValue.index2];
-    //     console.log('numArrayCopy: ', numArrayCopy);
-    //
-    //     for (let j = i+1; j < keys.length; j++) {
-    //         const jValue = properVariations[keys[j]];
-    //         // console.log('keys[j]: ', keys[j]);
-    //         // console.log('properVariations[keys[j]]: ', jValue);
-    //         if (numArrayCopy[jValue.index1] !== undefined && numArrayCopy[jValue.index2] !== undefined) {
-    //             console.log('numArrayCopy[jValue.index1]: ', numArrayCopy[jValue.index1]);
-    //             console.log('numArrayCopy[jValue.index2]: ', numArrayCopy[jValue.index2]);
-    //             finalResult++;
-    //         }
-    //     }
-    //
-    //
-    //     // console.log('numArrayCopy: ', numArrayCopy);
-    // }
-    // for (const [key, value] of Object.entries(properVariations)) {
-    //     const numArrayCopy = numArray.slice();
-    //     console.log(`${key}:`, value);
-    //     delete numArrayCopy[value.index1];
-    //     delete numArrayCopy[value.index2];
-    //     // numArrayCopy.delete(value.index2);
-    //     console.log('numArrayCopy: ', numArrayCopy);
-    // }
-
-    //
-    // for (const property in properVariations) {
-    //     console.log(property, properVariations[property]);
-    // }
-
-    // for (let i = 0; i < properVariations.length; i++) {
-    //     const numArrayCopy = numArray.slice();
-    //     const number = properVariations[i];
-    //     if (number > 24) {
-    //         console.log('number is ', number, ' continue....')
-    //         continue;
-    //     }
-    //     const numberA = parseInt((number + '')[0]);
-    //     const numberB = parseInt((number + '')[1]);
-    //
-    //     let index = numArrayCopy.indexOf(numberA);
-    //     if (index > -1) {
-    //         numArrayCopy.splice(index, 1);
-    //     }
-    //     index = numArrayCopy.indexOf(numberB);
-    //     if (index > -1) {
-    //         numArrayCopy.splice(index, 1);
-    //     }
-    //     console.log('-----------');
-    //     console.log('number: => ', number)
-    //     console.log('numArrayCopy: ', numArrayCopy);
-    //     for (let j = i; j < properVariations.length; j++) {
-    //         if (properVariations[j + 1]) {
-    //             const number2 = properVariations[j + 1];
-    //             console.log('number2: ', number2);
-    //             console.log('numArrayCopy: ', numArrayCopy);
-    //             const numberA2 = parseInt((number2 + '')[0]);
-    //             const numberB2 = parseInt((number2 + '')[1]);
-    //             const index1 = numArrayCopy.indexOf(numberA2);
-    //             const index2 = numArrayCopy.indexOf(numberB2);
-    //
-    //             if (index1 > -1 && index2 > -1) {
-    //                 console.log('bingo!');
-    //                 numArrayCopy.splice(index1, 2);
-    //                 finalResult++;
-    //             }
-    //         }
-    //     }
-    //
-    //
-    //     // console.log('numArrayCopy: ', numArrayCopy);
-    // }
-    console.log(testArr);
+    console.log('testArr: ', testArr);
     const setVal = new Set();
     for (let i = 0; i < testArr.length; i++) {
         setVal.add(testArr[i].value);
     }
-    // return finalResult;
+
     return setVal.size;
     /*
     [ 1, 2, 3, 8 ]
