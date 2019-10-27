@@ -13,30 +13,22 @@ const solution = (A, B, C, D) => {
     const numArray = [A, B, C, D];
     numArray.sort(sortNumber);
 
-    const firstGroup = [];
-    const secondGroup = [];
+    const hoursGroup = [];
 
     for (let i = 0; i < numArray.length; i++) {
         for (let j = 1; j < numArray.length; j++) {
             const stringNumber = numArray[i] + '' + numArray[j];
-            if (stringNumber > 23 && stringNumber < 59) {
-                secondGroup.push(stringNumber);
-            }
             if (stringNumber < 23 && stringNumber > 0) {
-                firstGroup.push(stringNumber);
+                hoursGroup.push(stringNumber);
             }
         }
     }
 
-    if (firstGroup.length === 0) {
+    if (hoursGroup.length === 0) {
         return 0;
     }
-    // console.log('firstGroup: ', firstGroup);
-    // console.log('secondGroup: ', secondGroup);
-
 
     const properVariations = [];
-    // console.log('numArray: ', numArray);
     const arrayToChange = numArray.slice();
     const length = arrayToChange.length;
     for (let i = 0; i < length; i++) {
@@ -79,57 +71,45 @@ const solution = (A, B, C, D) => {
         }
     }
 
-    // console.log(properVariations);
-    const testArr = [];
+    const resultArr = [];
 
-    // if (properVariations[0].value >= 24) {
-    //     return 0;
-    // }
+    function isSecondIterationValueValid(numArrayCopy, j) {
+        return numArrayCopy[properVariations[j].index1] !== undefined &&
+            numArrayCopy[properVariations[j].index2] !== undefined;
+    }
+
+    function isHourIntValid(index) {
+        return isHour(parseInt(properVariations[index].value));
+    }
 
     for (let i = 0; i < properVariations.length; i++) {
         const numArrayCopy = numArray.slice();
         delete numArrayCopy[properVariations[i].index1];
         delete numArrayCopy[properVariations[i].index2];
-        // console.log('numArrayCopy: ', numArrayCopy);
         for (let j = i; j < properVariations.length; j++) {
             if (
-                isHour(parseInt(properVariations[j].value)) &&
-                numArrayCopy[properVariations[j].index1] !== undefined &&
-                numArrayCopy[properVariations[j].index2] !== undefined
+                isHourIntValid(j) &&
+                isSecondIterationValueValid(numArrayCopy, j)
             ) {
-                testArr.push({
+                resultArr.push({
                     value: properVariations[j].value + '' + properVariations[i].value,
-                    ind: [
-                        properVariations[j].index1,
-                        properVariations[j].index2,
-                        properVariations[i].index1,
-                        properVariations[i].index2,
-                    ],
                 });
             }
 
             if (
-                isHour(parseInt(properVariations[i].value)) &&
-                numArrayCopy[properVariations[j].index1] !== undefined &&
-                numArrayCopy[properVariations[j].index2] !== undefined
+                isHourIntValid(i) &&
+                isSecondIterationValueValid(numArrayCopy, j)
             ) {
-                testArr.push({
+                resultArr.push({
                     value: properVariations[i].value + '' + properVariations[j].value,
-                    ind: [
-                        properVariations[i].index1,
-                        properVariations[i].index2,
-                        properVariations[j].index1,
-                        properVariations[j].index2,
-                    ],
                 });
             }
         }
     }
 
-    // console.log('testArr: ', testArr);
     const setVal = new Set();
-    for (let i = 0; i < testArr.length; i++) {
-        setVal.add(testArr[i].value);
+    for (let i = 0; i < resultArr.length; i++) {
+        setVal.add(resultArr[i].value);
     }
 
     return setVal.size;
