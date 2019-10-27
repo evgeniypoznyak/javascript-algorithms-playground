@@ -1,5 +1,3 @@
-// you can write to stdout for debugging purposes, e.g.
-// console.log('this is a debug message');
 
 const solution = (A, B, C, D) => {
     function sortNumber(a, b) {
@@ -29,19 +27,20 @@ const solution = (A, B, C, D) => {
     }
 
 
-
     const result = [];
     console.log('numArray: ', numArray);
-    const arrayToCahnge = numArray.splice();
-    for (let i = 0; i < numArray.length; i++) {
-        // todo
+    const arrayToChange = numArray.slice();
+    const length = arrayToChange.length;
+    for (let i = 0; i < length; i++) {
+
+
+
     }
 
     return result.length;
 };
 
 
-console.log('6: ', solution(1, 8, 3, 2)); // 6
-console.log('3: ', solution(2, 3, 3, 2)); // 3
-console.log('0: ', solution(6, 2, 4, 7)); // 0
-
+module.exports = {
+    solution: solution,
+};
