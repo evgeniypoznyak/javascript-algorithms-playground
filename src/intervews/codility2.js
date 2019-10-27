@@ -18,7 +18,7 @@ const solution = (A, B, C, D) => {
     for (let i = 0; i < numArray.length; i++) {
         for (let j = 1; j < numArray.length; j++) {
             const stringNumber = numArray[i] + '' + numArray[j];
-            if (stringNumber < 23 && stringNumber > 0) {
+            if (stringNumber < 24 && stringNumber > 0) {
                 hoursGroup.push(stringNumber);
             }
         }
