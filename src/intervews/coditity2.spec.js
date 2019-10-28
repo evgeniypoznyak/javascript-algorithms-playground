@@ -10,14 +10,6 @@ describe('codility2', () => {
 
     it('Should solution return 3', () => {
         const expected = 3;
-        // 2 , 2 , 3 , 3
-        /*
-        2233  // a , b , c , d
-        2233 // b , a , c , d
-        2323 // a , c , b , d
-        2323 // a , d , b , c
-        2323 // b , d , a , c
-         */
         const actual = solution(2, 3, 3, 2);
         expect(actual).to.equal(expected);
     });
