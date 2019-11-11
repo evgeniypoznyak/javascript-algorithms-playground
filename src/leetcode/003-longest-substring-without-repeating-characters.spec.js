@@ -1,4 +1,4 @@
-const {lengthOfLongestSubstring} = require('./longest-substring-without-repeating-characters');
+const {lengthOfLongestSubstring} = require('./003-longest-substring-without-repeating-characters');
 
 describe('lengthOfLongestSubstring', () => {
     it('lengthOfLongestSubstring is a function', () => {
