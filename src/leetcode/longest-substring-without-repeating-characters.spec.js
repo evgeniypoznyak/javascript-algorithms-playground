@@ -31,7 +31,7 @@ describe('lengthOfLongestSubstring', () => {
 
     it('Should abcabd solution return 4', () => {
         const actual = lengthOfLongestSubstring('abcabd');
-        const expected = 3;
+        const expected = 4;
         expect(actual).toEqual(expected);
     });
 
@@ -47,7 +47,7 @@ describe('lengthOfLongestSubstring', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('Should solution return 4', () => {
+    it('Should "aaaabbbbabcdaaabbbcc" solution return 4', () => {
         const actual = lengthOfLongestSubstring('aaaabbbbabcdaaabbbcc');
         const expected = 4;
         expect(actual).toEqual(expected);
@@ -62,6 +62,12 @@ describe('lengthOfLongestSubstring', () => {
     it('Should "dvdf" solution return 3', () => {
         const actual = lengthOfLongestSubstring('dvdf');
         const expected = 3;
+        expect(actual).toEqual(expected);
+    });
+
+    it('Should "bpfbhmipx" solution return 7', () => {
+        const actual = lengthOfLongestSubstring('bpfbhmipx');
+        const expected = 7;
         expect(actual).toEqual(expected);
     });
 });

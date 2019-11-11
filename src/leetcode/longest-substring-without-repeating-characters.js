@@ -21,39 +21,59 @@ Explanation: The answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 
+class HashMap {
+    constructor() {
+        this.values = {};
+    }
+
+    has(v) {
+        return this.values[v] !== undefined;
+    }
+
+    set(value) {
+        this.values[value] = value;
+    }
+
+    get(v) {
+        return this.values[v];
+    }
+
+    remove(key) {
+        delete this.values[key];
+    }
+
+    size() {
+        return Object.keys(this.values).length;
+    }
+}
+
 /**
  * @param {string} s
  * @return {number}
  */
 const lengthOfLongestSubstring = s => {
-    const combinations = [];
     if (s.length === 0) {
         return 0;
     }
-    const string = s.trim().toLocaleLowerCase();
+    const hashMap = {};
+    let left = 0;
+    let right = 0;
+    let max = 0;
 
-    if (string.length === 0 || string.length === 1) {
-        return 1;
-    }
-
-    const arr = string.split('');
-
-    let result = arr.shift();
-    const arrLength = arr.length;
-
-    for (let i = 0; i < arrLength; i++) {
-        const nextLetter = arr.shift();
-        if (nextLetter) {
-            if (!result.includes(nextLetter)) {
-                result = result + nextLetter;
-                combinations.push(result.length);
-            } else {
-                combinations.push(result.length);
-                result = nextLetter;
-            }
+    while (right < s.length) {
+        const rChar = s[right];
+        const lChar = s[left];
+        if (hashMap[rChar] === undefined) {
+            hashMap[rChar] = right;
+            right++;
+            max = Math.max(max, Object.keys(hashMap).length);
+        } else {
+            delete hashMap[lChar];
+            left++;
         }
     }
-    return Math.max(...combinations);
+
+    return max;
 };
 
 /*
