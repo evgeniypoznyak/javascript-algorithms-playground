@@ -55,7 +55,7 @@ const lengthOfLongestSubstring = s => {
     if (s.length === 0) {
         return 0;
     }
-    const hashMap = {};
+    const hashMap = new HashMap();
     let left = 0;
     let right = 0;
     let max = 0;
@@ -63,12 +63,12 @@ const lengthOfLongestSubstring = s => {
     while (right < s.length) {
         const rChar = s[right];
         const lChar = s[left];
-        if (hashMap[rChar] === undefined) {
-            hashMap[rChar] = right;
+        if (!hashMap.has(rChar)) {
+            hashMap.set(rChar);
             right++;
-            max = Math.max(max, Object.keys(hashMap).length);
+            max = Math.max(max, hashMap.size());
         } else {
-            delete hashMap[lChar];
+            delete hashMap.remove(lChar);
             left++;
         }
     }
