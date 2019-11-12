@@ -65,7 +65,6 @@ describe('Median of Two Sorted Arrays', () => {
         expect(actual).toEqual(expected);
     });
 
-
     it('Should [1,3] [2] solution return 2.00000', () => {
         const actual = solution([1, 3], [2]);
         const expected = 2.00000;
@@ -77,7 +76,6 @@ describe('Median of Two Sorted Arrays', () => {
         const expected = 2.50000;
         expect(actual).toEqual(expected);
     });
-
 
     it('Should solution return 7.50000', () => {
         const actual = solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], [1, 4, 8, 15, 18, 25]);
