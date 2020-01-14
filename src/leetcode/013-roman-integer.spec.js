@@ -1,4 +1,4 @@
-const {solution} = require('./013.roman-integer');
+const {solution} = require('./013-roman-integer');
 
 describe('Roman to Integer', () => {
     it('solution is a function', () => {
