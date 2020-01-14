@@ -24,4 +24,8 @@ describe('Roman to Integer', () => {
     it('Should "MCMXCIV" solution return 1994', () => {
         expect(solution('MCMXCIV')).toBe(1994);
     });
+
+    it('Should "MMXX" solution return 2020', () => {
+        expect(solution('MMXX')).toBe(2020);
+    });
 });
