@@ -41,6 +41,28 @@ var isValid = function(s) {
  */
 
 const isValid = s => {
+const map = {
+    '(': ')',
+    '[': ']',
+    '{': '}',
+};
+    const stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        const el = s[i];
+        // continue until if open bracket are exists
+        if (map[el]) {
+            stack.push(map[el]);
+        } else {
+            // if not matched bracket found then, looking for closing
+            const poppedEl = stack.pop();
+            if (el !== poppedEl) {
+                return false;
+            }
+        }
+    }
+    console.log(stack.length);
+    return stack.length === 0;
 
 };
 
