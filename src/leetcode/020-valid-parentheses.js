@@ -61,9 +61,7 @@ const map = {
             }
         }
     }
-    console.log(stack.length);
     return stack.length === 0;
-
 };
 
 module.exports = {
