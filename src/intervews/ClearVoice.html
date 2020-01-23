@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style type="text/css">
+    .customButton {
+        font-family: 'Open Sans', sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background-color: #1FC37D;
+        width: 157px;
+        height: 50px;
+        color: white;
+        font-size: 13px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 8px 0px 0px rgba(25, 156, 100, 1);
+        -moz-box-shadow: 0px 8px 0px 0px rgba(25, 156, 100, 1);
+        box-shadow: 0px 8px 0px 0px rgba(25, 156, 100, 1);
+        transition: all .3s;
+    }
+
+    .buttonPressed {
+        transform: translateY(2px);
+        transition: all .3s;
+        box-shadow: 0 6px 0 0 rgba(25, 156, 100, 1);
+    }
+
+
+    .customButton:hover {
+        cursor: pointer;
+    }
+
+    .customButton > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+</style>
+<div class="customButton" onclick="onClickButton()">
+    <div id="textField">
+        LOAD DATA
+    </div>
+</div>
+
+<script type="text/javascript">
+    const loadingText = 'LOADING...';
+    const loadedCompetedText = `I'M LOADED!`;
+
+    const onClickButton = () => {
+        const button = document.querySelector('#textField');
+        const buttonDiv = document.querySelector('.customButton');
+        button.textContent = loadingText;
+        buttonDiv.className = 'customButton buttonPressed';
+        getData().then(data => {
+            button.textContent = loadedCompetedText;
+            buttonDiv.className = 'customButton';
+        });
+    };
+    const getData = () => {
+        return new Promise(
+            resolve => setTimeout(resolve, 1500)
+        )
+    };
+
+    const users = [
+        {name: 'Agahnim', age: 26},
+        {name: 'Navi', age: 8},
+        {name: 'Tingle', age: 26},
+        {name: 'Ganon', age: 28},
+        {name: 'Hylia', age: 24},
+        {name: 'Lana', age: 1},
+        {name: 'Impa', age: 26},
+        {name: 'Midna', age: 30},
+        {name: 'Yuga', age: 22},
+        {name: 'Zelda', age: 2},
+        {name: 'Link', age: 7},
+    ];
+
+    /**
+     * Step 1: Given this list of users, create a new array of users
+     * whose age is over 25 and console log the result.
+     */
+
+
+    // e.g. console.log(getUsersOver25(users)) ----> [{ name: 'Agahnim', age: 26 }, { name: 'Tingle', age: 26 }, etc...]
+
+
+    /**
+     * Step 2: Using the result from Step 1, console log their names
+     */
+
+// e.g. console.log(getNamesOfOver25(users)) ----> ['Agahnim', 'Tingle', etc...]
+
+    const filterUsersOlderThan25 = users => {
+        if (users.length === 0) {
+            return [];
+        }
+        return users.filter(user => user.age > 25);
+    };
+
+    /*
+    Object.keys(o).reduce(function (previous, key) {
+        previous.value += o[key].value;
+        return previous;
+    }, { value: 0 });
+     */
+
+    const getUsersNames = users => {
+        const result = [];
+        for (let i = 0; i < users.length; i++) {
+            result.push(users[i].name);
+        }
+        return result;
+        // return users.reduce((acc, next) =>{
+        //     return {
+        //         ...acc,
+        //         ...{names: next.name},
+        //     };
+        // }, {});
+    };
+
+    const result1 = filterUsersOlderThan25(users);
+
+    console.log(result1);
+
+    console.log(getUsersNames(result1));
+
+</script>
+</body>
+</html>
