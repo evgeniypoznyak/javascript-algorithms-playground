@@ -3,13 +3,10 @@
 const solution = A => {
     const smaller = A => {
         let counter = 0;
+        const ifSmallerWrong = (A, i) => A[i + 1] !== undefined && i % 2 === 0 && A[i] > A[i + 1];
         for (let i = 0; i < A.length; i++) {
-            if (A[i + 1] !== undefined) {
-                if (i % 2 === 0) {
-                    if (A[i] > A[i + 1]) {
-                        counter++;
-                    }
-                }
+            if (ifSmallerWrong(A, i)) {
+                counter++;
             }
         }
         return counter;
@@ -17,13 +14,10 @@ const solution = A => {
 
     const bigger = A => {
         let counter = 0;
+        const ifBiggerWrong = i => A[i + 1] !== undefined && i % 1 === 0 && A[i] < A[i + 1];
         for (let i = 0; i < A.length; i++) {
-            if (A[i + 1] !== undefined) {
-                if (i % 1 === 0) {
-                    if (A[i] < A[i + 1]) {
-                        counter++;
-                    }
-                }
+            if (ifBiggerWrong(i)) {
+                counter++;
             }
         }
         return counter;
