@@ -25,17 +25,15 @@ Explanation: The array represents the integer 4321.
 //  * @return {number[]}
 //  */
 const plusOne = digits => {
-    // const lastElement = digits.pop() + 1;
-    // digits.push(lastElement);
-
     for (let i = digits.length - 1; i >= 0; i--) {
         // 0-8
-        if (digits[i] !== 9) {
+        if (digits[i] < 9) {
             digits[i] = digits[i] + 1;
             break;
         }
-        // 9
+        // If element is 9
         digits[i] = 0;
+        // if 9 and last index
         if (i === 0) {
             digits.unshift(1);
         };
