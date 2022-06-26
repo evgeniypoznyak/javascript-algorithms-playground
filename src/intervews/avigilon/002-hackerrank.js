@@ -10,40 +10,39 @@
  */
 
 const solution = (data, max) => {
-    const dataLength = data.length;
+  const dataLength = data.length
 
-    // O(1)
-    const finalResult = [];
-    let charLength = 0;
-    let buffer = [];
+  // O(1)
+  const finalResult = []
+  let charLength = 0
+  let buffer = []
 
+  // O(N)
+  for (let i = 0; i < dataLength; i++) {
+    if (data[i].length >= max) {
+      finalResult.push(buffer)
+      buffer = []
+      charLength = data[i].length
+      buffer.push(data[i])
+    } else {
+      charLength = charLength + data[i].length
+      if (charLength <= max) {
+        buffer.push(data[i])
+      } else {
+        finalResult.push(buffer)
+        buffer = []
+        charLength = data[i].length
+        buffer.push(data[i])
+      }
+      if (data[i + 1] === undefined) {
+        finalResult.push(buffer)
+      }
+    }
+  }
 
-    // O(N)
-    for (let i = 0; i < dataLength; i++) {
-        if (data[i].length >= max) {
-            finalResult.push(buffer);
-            buffer = [];
-            charLength = data[i].length;
-            buffer.push(data[i]);
-        } else {
-                charLength = charLength + data[i].length;
-                if (charLength <= max) {
-                    buffer.push(data[i]);
-                } else {
-                    finalResult.push(buffer);
-                    buffer = [];
-                    charLength = data[i].length;
-                    buffer.push(data[i]);
-                }
-            if (data[i+1] === undefined) {
-                finalResult.push(buffer);
-            }
-            }
-        }
-
-    return finalResult;
-};
+  return finalResult
+}
 
 module.exports = {
-    solution: solution,
-};
+  solution: solution,
+}

@@ -21,14 +21,13 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 This is consistent to C's strstr() and Java's indexOf().
  */
 
-
 const strStr = (haystack, needle) => {
-    if (needle.length === 0) {
-        return 0;
-    }
-    return haystack.indexOf(needle);
-};
+  if (needle.length === 0) {
+    return 0
+  }
+  return haystack.indexOf(needle)
+}
 
 module.exports = {
-    solution: strStr,
-};
+  solution: strStr,
+}

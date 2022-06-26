@@ -24,24 +24,24 @@ Output: 4
 //  * @param {number[]} nums
 //  * @return {number}
 //  */
-const singleNumber = nums => {
-    const hash = {};
-    for (let i = 0; i < nums.length; i++) {
-        hash[nums[i]] = hash[nums[i]] !== undefined;
-    }
-    for (const key in hash) {
-        if (hash.hasOwnProperty(key) && hash[key] === false) return key * 1;
-    }
+const singleNumber = (nums) => {
+  const hash = {}
+  for (let i = 0; i < nums.length; i++) {
+    hash[nums[i]] = hash[nums[i]] !== undefined
+  }
+  for (const key in hash) {
+    if (hash.hasOwnProperty(key) && hash[key] === false) return key * 1
+  }
 
-// let result = 0;
-// Object.entries(hash).forEach(([key, value]) => {
-//     if (value === false) {
-//         return result = key * 1;
-//     }
-// });
-// return result;
-};
+  // let result = 0;
+  // Object.entries(hash).forEach(([key, value]) => {
+  //     if (value === false) {
+  //         return result = key * 1;
+  //     }
+  // });
+  // return result;
+}
 
 module.exports = {
-    solution: singleNumber,
-};
+  solution: singleNumber,
+}

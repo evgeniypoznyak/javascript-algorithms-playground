@@ -25,17 +25,16 @@ Could you do it in-place with O(1) extra space?
  */
 
 Array.prototype.rotate = function (k) {
-    this.push(...this.splice(0, this.length - k));
-};
+  this.push(...this.splice(0, this.length - k))
+}
 const rotate = (nums, k) => {
-    if (k > nums.length) {
-        for (let i = 0; i < k; i++) {
-            nums.unshift(nums.pop());
-        }
-        return nums;
+  if (k > nums.length) {
+    for (let i = 0; i < k; i++) {
+      nums.unshift(nums.pop())
     }
-    return nums.rotate(k);
-};
+    return nums
+  }
+  return nums.rotate(k)
+}
 
-rotate([1,2,3],1);
-
+rotate([1, 2, 3], 1)

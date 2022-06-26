@@ -24,39 +24,39 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 //  * @return {number[]}
 //  */
 const twoSum = (numbers, target) => {
-    let leftIndex = 0;
-    let rightIndex = numbers.length - 1;
+  let leftIndex = 0
+  let rightIndex = numbers.length - 1
 
-    while (numbers[leftIndex] + numbers[rightIndex] !== target) {
-        if (numbers[leftIndex] + numbers[rightIndex] < target) {
-            leftIndex++;
-        }
-        if (numbers[leftIndex] + numbers[rightIndex] > target) {
-            rightIndex--;
-        }
+  while (numbers[leftIndex] + numbers[rightIndex] !== target) {
+    if (numbers[leftIndex] + numbers[rightIndex] < target) {
+      leftIndex++
     }
-    return [leftIndex + 1, rightIndex + 1];
+    if (numbers[leftIndex] + numbers[rightIndex] > target) {
+      rightIndex--
+    }
+  }
+  return [leftIndex + 1, rightIndex + 1]
 
-    // //linfongi solution
-    // // https://leetcode.com/linfongi/
-    // let l = 0;
-    // let r = numbers.length - 1;
-    //
-    // for (;;) {
-    //     const sum = numbers[l] + numbers[r];
-    //
-    //     if (sum === target) {
-    //         return [l + 1, r + 1];
-    //     }
-    //
-    //     if (sum < target) {
-    //         l++;
-    //     } else {
-    //         r--;
-    //     }
-    // }
-};
+  // //linfongi solution
+  // // https://leetcode.com/linfongi/
+  // let l = 0;
+  // let r = numbers.length - 1;
+  //
+  // for (;;) {
+  //     const sum = numbers[l] + numbers[r];
+  //
+  //     if (sum === target) {
+  //         return [l + 1, r + 1];
+  //     }
+  //
+  //     if (sum < target) {
+  //         l++;
+  //     } else {
+  //         r--;
+  //     }
+  // }
+}
 
 module.exports = {
-    solution: twoSum,
-};
+  solution: twoSum,
+}

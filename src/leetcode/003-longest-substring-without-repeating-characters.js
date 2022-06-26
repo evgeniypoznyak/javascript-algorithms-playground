@@ -21,60 +21,61 @@ Explanation: The answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 
+
 class HashMap {
-    constructor() {
-        this.values = {};
-    }
+  constructor() {
+    this.values = {}
+  }
 
-    has(v) {
-        return this.values[v] !== undefined;
-    }
+  has(v) {
+    return this.values[v] !== undefined
+  }
 
-    set(value) {
-        this.values[value] = value;
-    }
+  set(value) {
+    this.values[value] = value
+  }
 
-    get(v) {
-        return this.values[v];
-    }
+  get(v) {
+    return this.values[v]
+  }
 
-    remove(key) {
-        delete this.values[key];
-    }
+  remove(key) {
+    delete this.values[key]
+  }
 
-    size() {
-        return Object.keys(this.values).length;
-    }
+  size() {
+    return Object.keys(this.values).length
+  }
 }
 
 /**
  * @param {string} s
  * @return {number}
  */
-const lengthOfLongestSubstring = s => {
-    if (s.length === 0) {
-        return 0;
-    }
-    const hashMap = new HashMap();
-    let left = 0;
-    let right = 0;
-    let max = 0;
+const lengthOfLongestSubstring = (s) => {
+  if (s.length === 0) {
+    return 0
+  }
+  const hashMap = new HashMap()
+  let left = 0
+  let right = 0
+  let max = 0
 
-    while (right < s.length) {
-        const rChar = s[right];
-        const lChar = s[left];
-        if (hashMap.has(rChar)) {
-            delete hashMap.remove(lChar);
-            left++;
-        } else {
-            hashMap.set(rChar);
-            right++;
-            max = Math.max(max, hashMap.size());
-        }
+  while (right < s.length) {
+    const rChar = s[right]
+    const lChar = s[left]
+    if (hashMap.has(rChar)) {
+      delete hashMap.remove(lChar)
+      left++
+    } else {
+      hashMap.set(rChar)
+      right++
+      max = Math.max(max, hashMap.size())
     }
+  }
 
-    return max;
-};
+  return max
+}
 
 /*
 function lengthOfLongestSubstring(s) {
@@ -88,7 +89,6 @@ function lengthOfLongestSubstring(s) {
     }, 0);
 }
  */
-
 
 /*
 var lengthOfLongestSubstring = function(s) {
@@ -109,5 +109,5 @@ var lengthOfLongestSubstring = function(s) {
  */
 
 module.exports = {
-    lengthOfLongestSubstring,
-};
+  lengthOfLongestSubstring,
+}

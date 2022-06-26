@@ -22,15 +22,15 @@ Output: "10101"
 //  */
 
 const addBinary = (a, b) => {
-    const aBin = `0b${a}`;
-    const bBin = `0b${b}`;
-    // eslint-disable-next-line no-undef
-    const sum = BigInt(aBin) + BigInt(bBin);
-    // BigInt('0b' + a) + BigInt('0b' + b)
+  const aBin = `0b${a}`
+  const bBin = `0b${b}`
+  // eslint-disable-next-line no-undef
+  const sum = BigInt(aBin) + BigInt(bBin)
+  // BigInt('0b' + a) + BigInt('0b' + b)
 
-    return (sum).toString(2);
-};
+  return sum.toString(2)
+}
 
 module.exports = {
-    solution: addBinary,
-};
+  solution: addBinary,
+}

@@ -24,10 +24,10 @@ Explanation: The square root of 8 is 2.82842..., and since
 //  * @param {number} x
 //  * @return {number}
 //  */
-const mySqrt = x => {
-    return Math.floor(Math.sqrt(x));
-};
+const mySqrt = (x) => {
+  return Math.floor(Math.sqrt(x))
+}
 
 module.exports = {
-    solution: mySqrt,
-};
+  solution: mySqrt,
+}

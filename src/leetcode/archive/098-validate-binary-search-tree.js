@@ -39,7 +39,6 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * }
  */
 
-
 /*
 breadthFirstSearch() {
         let currentNode = this.root;
@@ -63,58 +62,60 @@ breadthFirstSearch() {
 
 // eslint-disable-next-line no-unused-vars
 class TreeNode {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
+  constructor(val) {
+    this.val = val
+    this.left = null
+    this.right = null
+  }
 }
 
 // [2, 1, 3];
-const testValues1 = new TreeNode(2);
-testValues1.left = new TreeNode(1);
-testValues1.right = new TreeNode(3);
+const testValues1 = new TreeNode(2)
+testValues1.left = new TreeNode(1)
+testValues1.right = new TreeNode(3)
 // [5, 1, 4, null, null, 3, 6];
-const testValues2 = new TreeNode(5);
-testValues2.left = new TreeNode(1);
-testValues2.right = new TreeNode(4);
+const testValues2 = new TreeNode(5)
+testValues2.left = new TreeNode(1)
+testValues2.right = new TreeNode(4)
 
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
 
-const isValidBST = root => {
+const isValidBST = (root) => {
+  if (!root) {
+    return true // Sanity check for passing test case '[]'
+  }
+
+  function helper(root, min, max) {
     if (!root) {
-        return true; // Sanity check for passing test case '[]'
+      return true // We hit the end of the path
     }
 
-    function helper(root, min, max) {
-        if (!root) {
-            return true; // We hit the end of the path
-        }
-
-        if ((min !== null && root.val <= min) || (max !== null && root.val >= max)) {
-            return false; // current node's val doesn't satisfy the BST rules
-        }
-
-        // Continue to scan left and right
-        return helper(root.left, min, root.val) && helper(root.right, root.val, max);
+    if (
+      (min !== null && root.val <= min) ||
+      (max !== null && root.val >= max)
+    ) {
+      return false // current node's val doesn't satisfy the BST rules
     }
 
-    return helper(root, null, null);
-};
+    // Continue to scan left and right
+    return helper(root.left, min, root.val) && helper(root.right, root.val, max)
+  }
 
-const testValues3 = new TreeNode(0);
-testValues3.left = new TreeNode(-1);
+  return helper(root, null, null)
+}
 
-const testValues4 = new TreeNode(0);
-testValues4.left = new TreeNode(null);
-testValues4.right = new TreeNode(-1);
+const testValues3 = new TreeNode(0)
+testValues3.left = new TreeNode(-1)
 
+const testValues4 = new TreeNode(0)
+testValues4.left = new TreeNode(null)
+testValues4.right = new TreeNode(-1)
 
-console.log(isValidBST());
-console.log(isValidBST(testValues1));
-console.log(isValidBST(testValues2));
-console.log(isValidBST(testValues3));
-console.log(isValidBST(testValues4));
+console.log(isValidBST())
+console.log(isValidBST(testValues1))
+console.log(isValidBST(testValues2))
+console.log(isValidBST(testValues3))
+console.log(isValidBST(testValues4))

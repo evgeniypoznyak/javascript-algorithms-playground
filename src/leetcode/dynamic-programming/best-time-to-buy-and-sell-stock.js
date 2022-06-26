@@ -25,18 +25,18 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  * @param {number[]} prices
  * @return {number}
  */
-const maxProfit = prices => {
-    if (prices.length === 0 || prices.length === 1) return 0;
-    // assume that at index 0 is minimum value
-    let min = Number.MAX_SAFE_INTEGER;
-    let max = Number.MIN_SAFE_INTEGER;
-    for (let i = 0; i < prices.length; i++) {
-        // calculate difference and memoize this as absolute min value
-        min = Math.min(min, prices[i]);
-        // calculate difference and memoize this as absolute max value
-        max = Math.max(max, prices[i] - min);
-    }
-    return max < 0 ? 0 : max;
-};
+const maxProfit = (prices) => {
+  if (prices.length === 0 || prices.length === 1) return 0
+  // assume that at index 0 is minimum value
+  let min = Number.MAX_SAFE_INTEGER
+  let max = Number.MIN_SAFE_INTEGER
+  for (let i = 0; i < prices.length; i++) {
+    // calculate difference and memoize this as absolute min value
+    min = Math.min(min, prices[i])
+    // calculate difference and memoize this as absolute max value
+    max = Math.max(max, prices[i] - min)
+  }
+  return max < 0 ? 0 : max
+}
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]))

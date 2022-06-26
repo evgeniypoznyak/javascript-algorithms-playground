@@ -40,30 +40,30 @@ var isValid = function(s) {
 };
  */
 
-const isValid = s => {
-const map = {
+const isValid = (s) => {
+  const map = {
     '(': ')',
     '[': ']',
     '{': '}',
-};
-    const stack = [];
+  }
+  const stack = []
 
-    for (let i = 0; i < s.length; i++) {
-        const el = s[i];
-        // continue until if open bracket are exists
-        if (map[el]) {
-            stack.push(map[el]);
-        } else {
-            // if not matched bracket found then, looking for closing
-            const poppedEl = stack.pop();
-            if (el !== poppedEl) {
-                return false;
-            }
-        }
+  for (let i = 0; i < s.length; i++) {
+    const el = s[i]
+    // continue until if open bracket are exists
+    if (map[el]) {
+      stack.push(map[el])
+    } else {
+      // if not matched bracket found then, looking for closing
+      const poppedEl = stack.pop()
+      if (el !== poppedEl) {
+        return false
+      }
     }
-    return stack.length === 0;
-};
+  }
+  return stack.length === 0
+}
 
 module.exports = {
-    solution: isValid,
-};
+  solution: isValid,
+}

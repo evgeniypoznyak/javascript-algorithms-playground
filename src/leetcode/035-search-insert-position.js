@@ -25,44 +25,43 @@ Output: 0
  */
 
 const searchInsert = (nums, target) => {
-    if (nums.length === 0) {
-        return 0;
+  if (nums.length === 0) {
+    return 0
+  }
+  if (nums.length === 1) {
+    if (nums[0] > target) {
+      return 0
     }
-    if (nums.length === 1) {
-        if (nums[0] > target) {
-            return 0;
-        }
-        if (nums[0] < target) {
-            return 1;
-        }
+    if (nums[0] < target) {
+      return 1
     }
-    const searchResult = nums.indexOf(target);
-    if (searchResult !== -1) {
-        return searchResult;
+  }
+  const searchResult = nums.indexOf(target)
+  if (searchResult !== -1) {
+    return searchResult
+  }
+  for (let i = 0; i < nums.length; i++) {
+    const curr = nums[i]
+    const next = nums[i + 1]
+
+    if (target < curr) {
+      return 0
     }
-    for (let i = 0; i < nums.length; i++) {
-        const curr = nums[i];
-        const next = nums[i + 1];
 
-        if (target < curr ) {
-            return 0;
-        }
-
-        if (target < curr && target > next) {
-            return i + 1;
-        }
-
-        if (target > curr && target < next) {
-            return i + 1;
-        }
-
-        if (next === undefined) {
-            return i + 1;
-        }
+    if (target < curr && target > next) {
+      return i + 1
     }
-};
 
+    if (target > curr && target < next) {
+      return i + 1
+    }
+
+    if (next === undefined) {
+      return i + 1
+    }
+  }
+}
 
 module.exports = {
-    solution: searchInsert,
-};
+  solution: searchInsert,
+}

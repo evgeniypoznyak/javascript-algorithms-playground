@@ -24,24 +24,23 @@ Explanation: The array represents the integer 4321.
 //  * @param {number[]} digits
 //  * @return {number[]}
 //  */
-const plusOne = digits => {
-    for (let i = digits.length - 1; i >= 0; i--) {
-        // 0-8
-        if (digits[i] < 9) {
-            digits[i] = digits[i] + 1;
-            break;
-        }
-        // If element is 9
-        digits[i] = 0;
-        // if 9 and last index
-        if (i === 0) {
-            digits.unshift(1);
-        };
+const plusOne = (digits) => {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    // 0-8
+    if (digits[i] < 9) {
+      digits[i] = digits[i] + 1
+      break
     }
-    return digits;
-};
-
+    // If element is 9
+    digits[i] = 0
+    // if 9 and last index
+    if (i === 0) {
+      digits.unshift(1)
+    }
+  }
+  return digits
+}
 
 module.exports = {
-    solution: plusOne,
-};
+  solution: plusOne,
+}

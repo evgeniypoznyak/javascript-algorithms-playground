@@ -58,27 +58,35 @@ var romanToInt = function(s) {
 };
  */
 
-const romanToInt = s => {
-    const arr = s.split('');
-    const map = new Map([['I', 1], ['V', 5], ['X', 10], ['L', 50], ['C', 100], ['D', 500], ['M', 1000]]);
-    const lastItem = arr.length - 1;
-    let result = map.get(s[lastItem]);
+const romanToInt = (s) => {
+  const arr = s.split('')
+  const map = new Map([
+    ['I', 1],
+    ['V', 5],
+    ['X', 10],
+    ['L', 50],
+    ['C', 100],
+    ['D', 500],
+    ['M', 1000],
+  ])
+  const lastItem = arr.length - 1
+  let result = map.get(s[lastItem])
 
-    for (let i = lastItem; i > 0; --i) {
-        const curr = map.get(s[i]);
-        const prev = map.get(s[i - 1]);
+  for (let i = lastItem; i > 0; --i) {
+    const curr = map.get(s[i])
+    const prev = map.get(s[i - 1])
 
-        // if left number greater or equal to current
-        if (prev >= curr) {
-            result = result + prev;
-        // if left number greater or equal to current
-        } else {
-            result = result - prev;
-        }
+    // if left number greater or equal to current
+    if (prev >= curr) {
+      result = result + prev
+      // if left number greater or equal to current
+    } else {
+      result = result - prev
     }
-    return result;
-};
+  }
+  return result
+}
 
 module.exports = {
-    solution: romanToInt,
-};
+  solution: romanToInt,
+}

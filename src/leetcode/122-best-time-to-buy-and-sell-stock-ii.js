@@ -34,34 +34,34 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 //  * @param {number[]} prices
 //  * @return {number}
 //  */
-const maxProfit = prices => {
-    if (prices.length < 2) {
-        return 0;
+const maxProfit = (prices) => {
+  if (prices.length < 2) {
+    return 0
+  }
+
+  // O(n)
+  return prices.reduce((total, current, index, arr) => {
+    const previous = arr[index - 1]
+    if (previous < current) {
+      const profit = current - previous
+      return total + profit
     }
+    return total
+  }, 0)
 
-    // O(n)
-    return prices.reduce((total, current, index, arr) => {
-        const previous = arr[index - 1];
-        if (previous < current) {
-            const profit = current - previous;
-            return total + profit;
-        }
-            return total;
-    }, 0);
-
-    // let total = 0;
-    // // O(n)
-    // for (let i = 1; i < prices.length; i++) {
-    //     const current = prices[i];
-    //     const previous = prices[i-1];
-    //     if (previous < current) {
-    //         const profit = current - previous;
-    //         total = total + profit;
-    //     }
-    // }
-    // return total;
-};
+  // let total = 0;
+  // // O(n)
+  // for (let i = 1; i < prices.length; i++) {
+  //     const current = prices[i];
+  //     const previous = prices[i-1];
+  //     if (previous < current) {
+  //         const profit = current - previous;
+  //         total = total + profit;
+  //     }
+  // }
+  // return total;
+}
 
 module.exports = {
-    solution: maxProfit,
-};
+  solution: maxProfit,
+}

@@ -1,9 +1,7 @@
 // Exercise 3
 
-const solution = () => {
-
-};
+const solution = () => {}
 
 module.exports = {
-    solution: solution,
-};
+  solution: solution,
+}

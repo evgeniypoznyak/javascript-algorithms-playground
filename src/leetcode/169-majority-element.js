@@ -15,26 +15,26 @@ Input: [2,2,1,1,1,2,2]
 Output: 2
  */
 
-const majorityElement = nums => {
-    const hash = {};
-    for (let i = 0; i < nums.length; i++) {
-        if (hash[nums[i]] === undefined) {
-            hash[nums[i]] = 1;
-        } else {
-            hash[nums[i]]++;
-        }
+const majorityElement = (nums) => {
+  const hash = {}
+  for (let i = 0; i < nums.length; i++) {
+    if (hash[nums[i]] === undefined) {
+      hash[nums[i]] = 1
+    } else {
+      hash[nums[i]]++
     }
-    let maximumValue = Number.MIN_SAFE_INTEGER;
-    let result = Number.MIN_SAFE_INTEGER;
-    for (const [key, value] of Object.entries(hash)) {
-        if (value > maximumValue) {
-            result = key * 1;
-            maximumValue = value;
-        }
+  }
+  let maximumValue = Number.MIN_SAFE_INTEGER
+  let result = Number.MIN_SAFE_INTEGER
+  for (const [key, value] of Object.entries(hash)) {
+    if (value > maximumValue) {
+      result = key * 1
+      maximumValue = value
     }
-    return result;
-};
+  }
+  return result
+}
 
 module.exports = {
-    solution: majorityElement,
-};
+  solution: majorityElement,
+}

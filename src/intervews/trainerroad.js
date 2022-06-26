@@ -16,7 +16,6 @@
 //
 //
 
-
 // const a = [5, 7, 9, 1, 3, 2, 6, 8, 11];
 //
 // function smallestMissing(nums) {
@@ -62,30 +61,27 @@
 //
 // console.log(mergeArrays(array1, array2))
 
-
-const input = ["Hello-2", "World-3", "this-2", "is-1", "my-0", "sentence-1"];
-
+const input = ['Hello-2', 'World-3', 'this-2', 'is-1', 'my-0', 'sentence-1']
 
 function convertToSentence(words) {
-    const result = [];
-    for (let i = 0; i < words.length; i++) {
-        let arr = words[i].split('-');
-        console.log(arr);
-        const str = arr[0].slice();
-        const char = str.charAt(str.length-1);
-        const num = arr[1].slice();
-        if (num !== 0) {
-            let c = '';
-            for (let i = 0; i < num; i ++){
-                c = c + char.toLocaleUpperCase();
-            }
-            result.push(str + c);
-        } else {
-            result.push(str);
-        }
-
+  const result = []
+  for (let i = 0; i < words.length; i++) {
+    let arr = words[i].split('-')
+    console.log(arr)
+    const str = arr[0].slice()
+    const char = str.charAt(str.length - 1)
+    const num = arr[1].slice()
+    if (num !== 0) {
+      let c = ''
+      for (let i = 0; i < num; i++) {
+        c = c + char.toLocaleUpperCase()
+      }
+      result.push(str + c)
+    } else {
+      result.push(str)
     }
-    return result;
+  }
+  return result
 }
 
-convertToSentence(input);
+convertToSentence(input)

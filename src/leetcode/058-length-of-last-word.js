@@ -18,10 +18,14 @@ Output: 5
  * @param {string} s
  * @return {number}
  */
-const lengthOfLastWord = function(s) {
-    return s.trim().split(' ').pop().replace(/[|&;$%@"<>()+,]/g, '').length;
-};
+const lengthOfLastWord = function (s) {
+  return s
+    .trim()
+    .split(' ')
+    .pop()
+    .replace(/[|&;$%@"<>()+,]/g, '').length
+}
 
 module.exports = {
-    solution: lengthOfLastWord,
-};
+  solution: lengthOfLastWord,
+}

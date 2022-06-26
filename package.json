@@ -5,7 +5,9 @@
   "repository": "https://github.com/evgeniypoznyak/javascript-algorithms-playground",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "format:ckeck": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -15,7 +17,9 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "jest": "^24.9.0",
-    "nyc": "^15.0.0"
+    "nyc": "^15.0.0",
+    "prettier": "^2.7.1"
   }
 }

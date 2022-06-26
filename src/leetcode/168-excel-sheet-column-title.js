@@ -32,22 +32,26 @@ Output: "ZY"
 //  * @return {string}
 //  */
 
-const convertToTitle = n => {
-    const alphabetLettersCount = 26;
-    const charCodeStart = 65;
-    const number = n - 1;
+const convertToTitle = (n) => {
+  const alphabetLettersCount = 26
+  const charCodeStart = 65
+  const number = n - 1
 
-    const charCodeEnd = (number, alphabetLettersCount) => number % alphabetLettersCount;
+  const charCodeEnd = (number, alphabetLettersCount) =>
+    number % alphabetLettersCount
 
-    const getLetter = () => String.fromCharCode(charCodeStart + charCodeEnd(number, alphabetLettersCount));
+  const getLetter = () =>
+    String.fromCharCode(
+      charCodeStart + charCodeEnd(number, alphabetLettersCount)
+    )
 
-    if (number < alphabetLettersCount) return getLetter();
+  if (number < alphabetLettersCount) return getLetter()
 
-    // if number is greater then do recursive call until number get smaller than alphabetLettersCount
-    // then all recursive call will be concatenated in one return
-    return convertToTitle(Math.floor((number) / alphabetLettersCount)) + getLetter();
-};
+  // if number is greater then do recursive call until number get smaller than alphabetLettersCount
+  // then all recursive call will be concatenated in one return
+  return convertToTitle(Math.floor(number / alphabetLettersCount)) + getLetter()
+}
 
 module.exports = {
-    solution: convertToTitle,
-};
+  solution: convertToTitle,
+}

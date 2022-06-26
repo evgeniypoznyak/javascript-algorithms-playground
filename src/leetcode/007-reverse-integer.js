@@ -23,39 +23,38 @@ when the reversed integer overflows.
 
  */
 
-
 /**
  * @param {number} x
  * @return {number}
  */
-const reverse = x => {
-    const minimum = -2147483648;
-    const maximum = 2147483647;
+const reverse = (x) => {
+  const minimum = -2147483648
+  const maximum = 2147483647
 
-    if (x === 0) {
-        return 0;
-    }
+  if (x === 0) {
+    return 0
+  }
 
-    if (x < minimum) {
-        return 0;
-    }
+  if (x < minimum) {
+    return 0
+  }
 
-    if (x > maximum) {
-        return 0;
-    }
-    let result;
+  if (x > maximum) {
+    return 0
+  }
+  let result
 
-    result = Math.sign(x) * parseInt(x.toString().split('').reverse().join(''));
+  result = Math.sign(x) * parseInt(x.toString().split('').reverse().join(''))
 
-    if (result > maximum) {
-        result = 0;
-    }
-    if (result < minimum) {
-        result = 0;
-    }
-    return result;
-};
+  if (result > maximum) {
+    result = 0
+  }
+  if (result < minimum) {
+    result = 0
+  }
+  return result
+}
 
 module.exports = {
-    solution: reverse,
-};
+  solution: reverse,
+}

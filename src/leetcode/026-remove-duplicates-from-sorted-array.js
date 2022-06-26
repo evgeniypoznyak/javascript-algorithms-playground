@@ -37,22 +37,21 @@ for (int i = 0; i < len; i++) {
 }
  */
 
-
 /*
  * @param {number[]} nums
  * @return number
  */
-const removeDuplicates = nums => {
-    // return new Set(nums).size;
-    let i = 0;
-    nums.forEach(elem => {
-        if (elem !== nums[i]) {
-            nums[++i] = elem;
-        }
-    });
-    return nums.length && i + 1;
-};
+const removeDuplicates = (nums) => {
+  // return new Set(nums).size;
+  let i = 0
+  nums.forEach((elem) => {
+    if (elem !== nums[i]) {
+      nums[++i] = elem
+    }
+  })
+  return nums.length && i + 1
+}
 
 module.exports = {
-    solution: removeDuplicates,
-};
+  solution: removeDuplicates,
+}

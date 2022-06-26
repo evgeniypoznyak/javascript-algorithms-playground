@@ -25,24 +25,24 @@ Explanation: There are three ways to climb to the top.
 Accepted
  */
 
-let calculations1 = 0;
-let calculations2 = 0;
+let calculations1 = 0
+let calculations2 = 0
 
 /**
  * @param {number} n
  * @return {number}
  */
-const climbStairs = n => {
-    if (n <= 3) {
-        return n;
-    }
-    const steps = [1, 2, 3];
-    for (let i = 3; i < n; i++) {
-        calculations1++;
-        steps.push(steps[i - 1] + steps[i - 2]);
-    }
-    return steps.pop();
-};
+const climbStairs = (n) => {
+  if (n <= 3) {
+    return n
+  }
+  const steps = [1, 2, 3]
+  for (let i = 3; i < n; i++) {
+    calculations1++
+    steps.push(steps[i - 1] + steps[i - 2])
+  }
+  return steps.pop()
+}
 /*
 Runtime: 56 ms, faster than 41.98% of JavaScript online submissions for Climbing Stairs.
 Memory Usage: 33.8 MB, less than 64.00% of JavaScript online submissions for Climbing Stairs.
@@ -53,24 +53,23 @@ Memory Usage: 33.8 MB, less than 92.00% of JavaScript online submissions for Cli
 
 // space complexity: O(n)
 const climbStairsFactory = () => {
-    const cache = {};
-    return function calculateStairs(n) {
-        calculations2++;
-        if (n <= 3) {
-            return n;
-        }
-        if (n in cache) {
-            return cache[n];
-        }
-        cache[n] = calculateStairs(n - 1) + calculateStairs(n - 2);
-        return cache[n];
-    };
-};
+  const cache = {}
+  return function calculateStairs(n) {
+    calculations2++
+    if (n <= 3) {
+      return n
+    }
+    if (n in cache) {
+      return cache[n]
+    }
+    cache[n] = calculateStairs(n - 1) + calculateStairs(n - 2)
+    return cache[n]
+  }
+}
 
-console.log(climbStairs(45));
-console.log('calculations1: ', calculations1);
+console.log(climbStairs(45))
+console.log('calculations1: ', calculations1)
 
-
-const calculateSteps = climbStairsFactory();
-console.log(calculateSteps(45));
-console.log('calculations2: ', calculations2);
+const calculateSteps = climbStairsFactory()
+console.log(calculateSteps(45))
+console.log('calculations2: ', calculations2)

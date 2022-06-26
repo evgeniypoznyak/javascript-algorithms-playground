@@ -23,32 +23,30 @@ Follow up:
 Could you solve it without converting the integer to a string?
  */
 
-
 /**
  * @param {number} x
  * @return {boolean}
  */
-const isPalindrome = x => {
-    if (x < 0) return false; // only positive number
-    if (x < 10) return true; // for 1-9 cases
-    if (x % 10 === 0) return false; // in case of last 0 [3330, 123320, 1000, etc]
-    let rev = 0; // reversed number
-    while (x >= 10) {
-        const cur = x % 10;
-        rev = rev * 10 + cur;
-        if (x === rev) return true; // check before changing
+const isPalindrome = (x) => {
+  if (x < 0) return false // only positive number
+  if (x < 10) return true // for 1-9 cases
+  if (x % 10 === 0) return false // in case of last 0 [3330, 123320, 1000, etc]
+  let rev = 0 // reversed number
+  while (x >= 10) {
+    const cur = x % 10
+    rev = rev * 10 + cur
+    if (x === rev) return true // check before changing
 
-        // better replace for Math.floor(), bit operator '~' inverts all the bits in your
-        // number and in the process converts the number to an int
-        x = ~~(x / 10);
+    // better replace for Math.floor(), bit operator '~' inverts all the bits in your
+    // number and in the process converts the number to an int
+    x = ~~(x / 10)
 
-        if (x === rev) return true; // check after changing
-        if (x < rev) return false; // stop in case reversed number becomes greater than original value
-    }
-    return false; // the longest case (diff in the middle) // [77778777, 10004001]
-};
-
+    if (x === rev) return true // check after changing
+    if (x < rev) return false // stop in case reversed number becomes greater than original value
+  }
+  return false // the longest case (diff in the middle) // [77778777, 10004001]
+}
 
 module.exports = {
-    solution: isPalindrome,
-};
+  solution: isPalindrome,
+}

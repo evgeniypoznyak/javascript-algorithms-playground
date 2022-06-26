@@ -49,19 +49,19 @@ for (int i = 0; i < len; i++) {
  * @return {number}
  */
 const removeElement = (nums, val) => {
-    let foundedAll = true;
-    while (foundedAll) {
-        const el = nums.indexOf(val);
-        if (el !== -1) {
-            nums.splice(el, 1);
-        } else {
-            foundedAll = false;
-        }
+  let foundedAll = true
+  while (foundedAll) {
+    const el = nums.indexOf(val)
+    if (el !== -1) {
+      nums.splice(el, 1)
+    } else {
+      foundedAll = false
     }
+  }
 
-    return nums.length;
-};
+  return nums.length
+}
 
 module.exports = {
-    solution: removeElement,
-};
+  solution: removeElement,
+}
