@@ -1,19 +1,25 @@
 module.exports = {
   root: true,
-  extends: ['prettier'],
+  parser: '@babel/eslint-parser',
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
   plugins: [],
   overrides: [
-    // Only uses Testing Library lint rules in test files
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: [],
     },
   ],
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 'latest',
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-env'],
+    },
   },
   env: {
-    es6: true,
+    browser: true,
+    es2021: true,
+    jest: true,
   },
   // "ignorePatterns": ["d=\"([\\s\\S]*?)\"", 'd="([\\s\\S]*?)"'],
   rules: {
@@ -37,4 +43,4 @@ module.exports = {
       },
     ],
   },
-}
+};
